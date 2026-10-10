@@ -2,6 +2,8 @@
 
 A visual project planner and infinite canvas workspace with an editorial *Workbench / Atelier Brut* aesthetic — warm paper, ink-black borders, hard offset shadows, a single punchy accent, and a built-in To-Do list that archives and auto-purges itself.
 
+live hosted at : https://plxn-work.netlify.app
+
 <img width="1901" height="1073" alt="PLXN dashboard in light mode" src="./public/screenshots/dashboard-light.png" />
 
 
