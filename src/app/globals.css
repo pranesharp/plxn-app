@@ -1,0 +1,445 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-lime: var(--lime);
+  --color-redink: var(--redink);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============================================================
+   WORKBENCH / ATELIER BRUT
+   Warm cream paper (light) / warm ink (dark)
+   Signature accent: lime. Secondary: red-ink rubber stamps.
+   ============================================================ */
+:root {
+  --radius: 0.5rem;
+
+  --ink: #1A1814;          /* warm ink-black */
+  --paper: #F4F0E6;        /* warm cream */
+  --lime: #C6F135;         /* signature pop */
+  --redink: #D14530;       /* rubber stamp / destructive */
+  --shadow: #1A1814;       /* hard offset shadow */
+
+  --background: #F4F0E6;
+  --foreground: #1A1814;
+  --card: #FBF8F1;
+  --card-foreground: #1A1814;
+  --popover: #FBF8F1;
+  --popover-foreground: #1A1814;
+  --primary: #C6F135;
+  --primary-foreground: #1A1814;
+  --secondary: #E8E2D2;
+  --secondary-foreground: #1A1814;
+  --muted: #ECE6D6;
+  --muted-foreground: #6B6356;
+  --accent: #D14530;
+  --accent-foreground: #FBF8F1;
+  --destructive: #D14530;
+  --destructive-foreground: #FBF8F1;
+  --border: #D9D2C2;
+  --input: #D9D2C2;
+  --ring: #C6F135;
+  --chart-1: #C6F135;
+  --chart-2: #14B8A6;
+  --chart-3: #F59E0B;
+  --chart-4: #D14530;
+  --chart-5: #8B5CF6;
+  --sidebar: #ECE6D6;
+  --sidebar-foreground: #1A1814;
+  --sidebar-primary: #C6F135;
+  --sidebar-primary-foreground: #1A1814;
+  --sidebar-accent: #E8E2D2;
+  --sidebar-accent-foreground: #1A1814;
+  --sidebar-border: #D9D2C2;
+  --sidebar-ring: #C6F135;
+}
+
+.dark {
+  --ink: #F2EEE2;          /* warm off-white */
+  --paper: #15140F;        /* warm near-black */
+  --lime: #C6F135;
+  --redink: #E5573F;
+  --shadow: #000000;
+
+  --background: #15140F;
+  --foreground: #F2EEE2;
+  --card: #1F1D17;
+  --card-foreground: #F2EEE2;
+  --popover: #1F1D17;
+  --popover-foreground: #F2EEE2;
+  --primary: #C6F135;
+  --primary-foreground: #15140F;
+  --secondary: #2A2720;
+  --secondary-foreground: #F2EEE2;
+  --muted: #2A2720;
+  --muted-foreground: #A39B8B;
+  --accent: #E5573F;
+  --accent-foreground: #15140F;
+  --destructive: #E5573F;
+  --destructive-foreground: #15140F;
+  --border: #3A372F;
+  --input: #3A372F;
+  --ring: #C6F135;
+  --chart-1: #C6F135;
+  --chart-2: #14B8A6;
+  --chart-3: #F59E0B;
+  --chart-4: #E5573F;
+  --chart-5: #A78BFA;
+  --sidebar: #1A1812;
+  --sidebar-foreground: #F2EEE2;
+  --sidebar-primary: #C6F135;
+  --sidebar-primary-foreground: #15140F;
+  --sidebar-accent: #2A2720;
+  --sidebar-accent-foreground: #F2EEE2;
+  --sidebar-border: #3A372F;
+  --sidebar-ring: #C6F135;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================================
+   Brut utilities — thick ink borders + hard offset shadows
+   ============================================================ */
+.brut {
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 0 var(--shadow);
+}
+.brut-sm {
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 0 var(--shadow);
+}
+.brut-xs {
+  border: 1.5px solid var(--ink);
+  box-shadow: 1.5px 1.5px 0 0 var(--shadow);
+}
+.brut-hover {
+  transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.brut-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--shadow);
+}
+.brut-hover:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 0 var(--shadow);
+}
+
+/* ============================================================
+   Rubber stamp — rotated, red ink, mono, uppercase
+   ============================================================ */
+.rubber-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.12rem 0.5rem;
+  border: 1.5px solid var(--redink);
+  color: var(--redink);
+  font-family: var(--font-geist-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: rotate(-5deg);
+  opacity: 0.85;
+  border-radius: 2px;
+  background: transparent;
+  white-space: nowrap;
+}
+.rubber-stamp--lime {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+:where(.dark) .rubber-stamp--lime {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+/* ============================================================
+   Washi tape — decorative strip
+   ============================================================ */
+.washi-tape {
+  position: absolute;
+  width: 64px;
+  height: 18px;
+  background: var(--lime);
+  opacity: 0.55;
+  transform: rotate(-3deg);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.washi-tape--red {
+  background: var(--redink);
+  opacity: 0.4;
+}
+.washi-tape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg, transparent 0 7px, rgba(0,0,0,0.04) 7px 8px);
+}
+
+/* ============================================================
+   Display serif + section numerals
+   ============================================================ */
+.display {
+  font-family: var(--font-fraunces);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+}
+.display-wonk {
+  font-family: var(--font-fraunces);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+.section-num {
+  font-family: var(--font-fraunces);
+  font-weight: 600;
+  line-height: 0.9;
+  color: var(--ink);
+  opacity: 0.12;
+  font-variant-numeric: lining-nums;
+}
+
+/* ============================================================
+   Paper noise overlay (subtle grain)
+   ============================================================ */
+.paper-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+:where(.dark) .paper-noise {
+  opacity: 0.06;
+  mix-blend-mode: screen;
+}
+
+/* ============================================================
+   Canvas engineering grid (dots + faint cross lines)
+   ============================================================ */
+.canvas-grid-dots {
+  background-image:
+    radial-gradient(circle, oklch(0.42 0.01 70 / 0.32) 1px, transparent 1.4px),
+    linear-gradient(to right, oklch(0.42 0.01 70 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.42 0.01 70 / 0.06) 1px, transparent 1px);
+}
+:where(.dark) .canvas-grid-dots {
+  background-image:
+    radial-gradient(circle, oklch(0.7 0.02 80 / 0.28) 1px, transparent 1.4px),
+    linear-gradient(to right, oklch(0.7 0.02 80 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.7 0.02 80 / 0.05) 1px, transparent 1px);
+}
+.canvas-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 120px 50px oklch(0.85 0.02 80 / 0.22);
+}
+html.dark .canvas-vignette::after {
+  box-shadow: inset 0 0 120px 50px oklch(0 0 0 / 0.4);
+}
+
+/* ============================================================
+   Accent system — user-switchable. `--lime` is overridden at runtime
+   by AccentContext. `--lime-ink` is the readable text color on top of the accent.
+   ============================================================ */
+:root {
+  --lime-ink: #1A1814;
+}
+.dark {
+  --lime-ink: #15140F;
+}
+
+/* ============================================================
+   Editorial registration marks + page numerals (Workbench flavor)
+   ============================================================ */
+.reg-mark {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  color: var(--ink);
+  opacity: 0.22;
+  pointer-events: none;
+}
+.reg-mark::before,
+.reg-mark::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.reg-mark::before { left: 50%; top: 0; width: 1.5px; height: 100%; transform: translateX(-50%); }
+.reg-mark::after { top: 50%; left: 0; height: 1.5px; width: 100%; transform: translateY(-50%); }
+:where(.dark) .reg-mark { opacity: 0.28; }
+
+/* Faded vertical edge label (e.g. "WORKBENCH" running down the spine edge) */
+.edge-label {
+  font-family: var(--font-geist-mono);
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.25;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Faded giant background wordmark (behind dashboard/canvas) */
+.bg-wordmark {
+  font-family: var(--font-fraunces);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  color: var(--ink);
+  opacity: 0.04;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+:where(.dark) .bg-wordmark { opacity: 0.05; }
+
+/* ============================================================
+   Custom scrollbar (warm)
+   ============================================================ */
+.plxn-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.5 0.01 70 / 0.4) transparent;
+}
+:where(.dark) .plxn-scroll {
+  scrollbar-color: oklch(0.6 0.02 80 / 0.5) transparent;
+}
+.plxn-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.plxn-scroll::-webkit-scrollbar-track { background: transparent; }
+.plxn-scroll::-webkit-scrollbar-thumb {
+  background: oklch(0.5 0.01 70 / 0.45);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.plxn-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--lime);
+  background-clip: padding-box;
+}
+:where(.dark) .plxn-scroll::-webkit-scrollbar-thumb {
+  background: oklch(0.6 0.02 80 / 0.5);
+  background-clip: padding-box;
+}
+
+/* ============================================================
+   Range slider — lime thumb
+   ============================================================ */
+input[type="range"].plxn-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: oklch(0.6 0.01 70 / 0.3);
+}
+:where(.dark) input[type="range"].plxn-range {
+  background: oklch(0.5 0.02 80 / 0.5);
+}
+input[type="range"].plxn-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--lime);
+  cursor: pointer;
+  border: 2px solid var(--ink);
+  box-shadow: 1.5px 1.5px 0 0 var(--shadow);
+}
+input[type="range"].plxn-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--lime);
+  cursor: pointer;
+  border: 2px solid var(--ink);
+}
+
+/* ============================================================
+   Entrance animations
+   ============================================================ */
+@keyframes plxn-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.plxn-rise { animation: plxn-rise 0.25s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes plxn-pop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+.plxn-pop { animation: plxn-pop 0.16s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Satisfying check-pop for completed task items */
+@keyframes plxn-check {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.plxn-check { animation: plxn-check 0.18s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Strike-through sweep for archived text */
+@keyframes plxn-strike {
+  from { background-size: 0 1.5px; }
+  to { background-size: 100% 1.5px; }
+}
+.plxn-strike {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 55%;
+  animation: plxn-strike 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
