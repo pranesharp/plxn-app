@@ -1,4 +1,4 @@
-# PLXN ($P_x$)
+8# PLXN ($P_x$)
 
 A visual project planner and infinite canvas workspace with an editorial *Workbench / Atelier Brut* aesthetic — warm paper, ink-black borders, hard offset shadows, a single punchy accent, and a built-in To-Do list that archives and auto-purges itself.
 
@@ -92,7 +92,7 @@ PLXN lets you map out complex projects spatially rather than getting lost in rig
 - Node.js (v18 or higher)
 - npm or bun
 
-### Installation
+### Installation-If you would host locally.
 
 ```bash
 # Clone the repository
@@ -117,33 +117,8 @@ npm run build   # or: bun run build
 This runs Next.js with `output: "export"` and produces a fully static site in the **`out/`** folder — a real `index.html` plus hashed assets in `out/_next/static/`. No Node server is required at runtime.
 
 
-## Deployment
 
-PLXN is a static export, so it deploys to any static host. Recommended free options:
 
-| Host | Why |
-|---|---|
-| **Netlify** (recommended) | Drag-and-drop the `out/` folder, or connect a GitHub repo. Free tier: 100 GB bandwidth / 300 build minutes. |
-| **Cloudflare Pages** | Unlimited bandwidth on the free tier. Connect a repo, set build `npm run build`, output dir `out`. |
-| **Vercel** | Native Next.js host. Free tier generous for personal projects. |
-| **GitHub Pages** | Free for public repos. Push `out/` to a `gh-pages` branch. |
-
-### Netlify (quick start)
-
-Drop a `netlify.toml` at the repo root:
-
-```toml
-[build]
-  command = "npm run build"
-  publish = "out"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
-
-Then either drag the `out/` folder onto Netlify's manual deploy page, or connect the repo for auto-deploys on every push.
 
 
 ## Project Structure
@@ -199,7 +174,7 @@ src/
 
 ## Attributes
 
-*Initially built as a personal project for personal workflow / project planning. Reimagined with a Workbench / Atelier Brut visual identity, a persistent Spine layout, a self-archiving To-Do list, and a live accent switcher.*
+*Initially built as a personal project for personal workflow / project planning. Reimagined with a Workbench / Atelier Brut visual identity, a persistent Spine layout, a self-archiving To-Do list, and a live accent switcher.* And uses of AI
 
 
 ## License
